@@ -1,0 +1,259 @@
+<title>Разбор техники</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Интерактивные разнесённые виды iPhone, MacBook Pro, Apple Watch и AirPods Pro: нажмите на устройство, и оно разлетится на детали.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: швейцарская сетка в монохроме (плагин UI UX Pro Max: Minimalism & Swiss Style).
+   Цвета нет нигде, кроме самих устройств, и они тоже серые: единственный акцент — контраст. */
+:root{
+  --bg:#0B0B0B; --bg-2:#111111; --line:#1F1F1F; --line-2:#333333;
+  --fg:#EDEDED; --muted:#9B9B9B; --dim:#6F6F6F;
+  --soft:rgba(255,255,255,.06); --callout:rgba(237,237,237,.32);
+  --gold:#DDAE4B; --gold-2:#F3D58C; --gold-soft:rgba(221,174,75,.14); --glow:rgba(243,213,140,.55);
+  --floor-shadow:rgba(0,0,0,.55); --trace:rgba(255,255,255,.08); --ghost:rgba(255,255,255,.2);
+  --f-body:"Inter","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#F5F5F3; --bg-2:#FFFFFF; --line:#E3E3E0; --line-2:#CBCBC8;
+    --fg:#111111; --muted:#5C5C5C; --dim:#858585;
+    --soft:rgba(0,0,0,.05); --callout:rgba(17,17,17,.3);
+    --gold:#A16207; --gold-2:#CA8A04; --gold-soft:rgba(161,98,7,.10); --glow:rgba(202,138,4,.45);
+    --floor-shadow:rgba(0,0,0,.16); --trace:rgba(0,0,0,.09); --ghost:rgba(0,0,0,.22);
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F5F5F3; --bg-2:#FFFFFF; --line:#E3E3E0; --line-2:#CBCBC8;
+  --fg:#111111; --muted:#5C5C5C; --dim:#858585;
+  --soft:rgba(0,0,0,.05); --callout:rgba(17,17,17,.3);
+    --gold:#A16207; --gold-2:#CA8A04; --gold-soft:rgba(161,98,7,.10); --glow:rgba(202,138,4,.45);
+  --floor-shadow:rgba(0,0,0,.16); --trace:rgba(0,0,0,.09); --ghost:rgba(0,0,0,.22);
+  color-scheme:light;
+}
+:root[data-theme="dark"]{ color-scheme:dark }
+body{background:var(--bg);color:var(--fg)}
+</style>
+<link rel="stylesheet" href="style.css">
+
+<div class="progress" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Разделы">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Разбор, в начало страницы">
+      <svg class="logo" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 6h12M4 10h12M6 14h12"/></svg>
+      <span>Разбор</span>
+    </a>
+    <div class="nav-links">
+      <a href="#lab">Лаборатория</a>
+      <a href="#chip">Чип</a>
+      <a href="#history">История</a>
+      <a href="#materials">Материалы</a>
+    </div>
+    <a class="btn btn-line btn-sm nav-cta" href="#lab" data-go="iphone">Разобрать</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow" data-in>Интерактивная анатомия техники</p>
+      <h1 class="hero-title" data-in style="--d:.08s">Загляни<br><span class="dim">внутрь.</span></h1>
+      <p class="lead" data-in style="--d:.16s">iPhone, MacBook, Apple Watch и AirPods, разобранные до последнего слоя. Нажмите на устройство, и оно разойдётся на детали: стекло, экран, плата, аккумулятор.</p>
+      <div class="cta-row" data-in style="--d:.24s">
+        <a class="btn btn-solid" href="#lab" data-go="iphone">Разобрать iPhone</a>
+        <a class="btn btn-text" href="#lab">Все устройства <span aria-hidden="true">→</span></a>
+      </div>
+      <dl class="hero-stats" data-in style="--d:.32s">
+        <div><dt>Устройств</dt><dd>4</dd></div>
+        <div><dt>Деталей</dt><dd id="statParts">39</dd></div>
+        <div><dt>Отвёрток</dt><dd>0</dd></div>
+      </dl>
+    </div>
+    <figure class="hero-figure" data-in style="--d:.12s">
+      <div class="hero-stage" id="heroStage" tabindex="0" aria-label="Модель iPhone. Сама разбирается и собирается. Нажмите или Enter, чтобы разобрать вручную, тяните, чтобы вращать."></div>
+      <figcaption class="hero-cap">Тяните, чтобы вращать. Нажмите, чтобы разобрать.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main>
+  <section class="chapter lab" id="lab" aria-labelledby="labTitle">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="eyebrow"><span class="num">01</span>Лаборатория</p>
+        <h2 id="labTitle">Разберите любое устройство</h2>
+        <p class="sub">Выберите устройство и нажмите на него. Детали разойдутся по слоям, как на сборочном чертеже. Положение меняется кнопками под сценой или мышью.</p>
+      </header>
+
+      <div class="tabs" role="tablist" aria-label="Устройство">
+        <button class="tab" role="tab" id="tab-iphone" aria-selected="true" aria-controls="labStage" data-dev="iphone" type="button">iPhone</button>
+        <button class="tab" role="tab" id="tab-mac" aria-selected="false" aria-controls="labStage" data-dev="mac" type="button" tabindex="-1">MacBook Pro</button>
+        <button class="tab" role="tab" id="tab-watch" aria-selected="false" aria-controls="labStage" data-dev="watch" type="button" tabindex="-1">Apple Watch</button>
+        <button class="tab" role="tab" id="tab-airpods" aria-selected="false" aria-controls="labStage" data-dev="airpods" type="button" tabindex="-1">AirPods Pro</button>
+        <span class="tab-ind" aria-hidden="true"></span>
+      </div>
+
+      <div class="lab-stage" id="labStage" role="tabpanel" aria-labelledby="tab-iphone" tabindex="0">
+        <div class="stamp" aria-hidden="true">
+          <span>Лист</span><span>Изделие</span><span>Деталей</span><span>Масштаб</span>
+          <b id="stSheet">1 / 4</b><b id="stName">iPhone</b><b id="stCount">10</b><b>условный</b>
+        </div>
+        <p class="stage-hint" id="stageHint"><span>Нажмите на устройство, чтобы разобрать</span></p>
+      </div>
+
+      <div class="dock">
+        <div class="controls">
+          <button class="btn btn-solid btn-wide" id="explodeBtn" type="button" aria-pressed="false" aria-controls="labStage"><span>Разобрать</span></button>
+          <div class="range">
+            <label for="explodeRange">Разнесение деталей</label>
+            <output id="explodeOut" for="explodeRange">0%</output>
+            <input id="explodeRange" type="range" min="0" max="100" step="1" value="0">
+          </div>
+          <div class="pose">
+            <div class="pos-head">
+              <span>Положение</span>
+              <button class="pill-btn" id="autoBtn" type="button" aria-pressed="false">Автоповорот</button>
+            </div>
+            <div class="presets" role="group" aria-label="Готовые ракурсы">
+              <button type="button" data-view="front">Спереди</button>
+              <button type="button" data-view="side">Сбоку</button>
+              <button type="button" data-view="back">Сзади</button>
+              <button type="button" data-view="top">Сверху</button>
+              <button type="button" data-view="iso" class="on">3/4</button>
+            </div>
+            <div class="pads">
+              <div class="dpad" role="group" aria-label="Поворот и наклон">
+                <button type="button" class="up" data-nudge="0,-10" aria-label="Посмотреть выше"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+                <button type="button" class="left" data-nudge="-30,0" aria-label="Повернуть влево"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                <button type="button" class="mid" id="resetBtn" aria-label="Сбросить положение"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.34-5.66M4 4v4.5h4.5"/></svg></button>
+                <button type="button" class="right" data-nudge="30,0" aria-label="Повернуть вправо"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+                <button type="button" class="down" data-nudge="0,10" aria-label="Посмотреть ниже"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+              </div>
+              <div class="zoompad" role="group" aria-label="Масштаб">
+                <button type="button" data-zoom="1.25" aria-label="Приблизить"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+                <output id="zoomOut">100%</output>
+                <button type="button" data-zoom="0.8" aria-label="Отдалить"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+              </div>
+              <p class="pad-note">Держите стрелку, чтобы крутить непрерывно. При увеличении камера наводится на выбранную деталь.</p>
+            </div>
+          </div>
+          <p class="keys">Клавиши: <kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd> положение, <kbd>+</kbd> <kbd>−</kbd> масштаб, <kbd>Enter</kbd> разобрать, <kbd>Esc</kbd> собрать</p>
+        </div>
+        <article class="part-card" id="partCard">
+          <div class="pc-text" aria-live="polite">
+            <div class="pc-top"><span class="pos" id="pcPos">Обзор</span><span id="pcDev">iPhone</span></div>
+            <h3 class="pc-name" id="pcName">iPhone</h3>
+            <p class="pc-desc" id="pcDesc">Около десятка основных модулей в корпусе толщиной меньше сантиметра.</p>
+            <ul class="pc-facts" id="pcFacts"></ul>
+          </div>
+          <figure class="pc-fig">
+            <div class="cu" id="pcCu" role="img" aria-label="Крупный план детали"></div>
+            <figcaption class="cu-cap"><span>Крупный план</span><span id="pcZoom"></span></figcaption>
+            <ol class="cu-bits" id="pcBits"></ol>
+          </figure>
+        </article>
+      </div>
+      <ol class="parts" id="partsList" aria-label="Детали устройства"></ol>
+    </div>
+  </section>
+
+  <section class="chapter chip" id="chip" aria-labelledby="chipTitle">
+    <div class="wrap chip-grid">
+      <div class="chip-copy" data-reveal>
+        <p class="eyebrow"><span class="num">02</span>Кремний</p>
+        <h2 id="chipTitle">Сердце размером с ноготь</h2>
+        <p class="sub">Процессор, графика, нейросетевой блок и память собраны в одну систему на кристалле. Справа схема чипа M4: наведите на блок или выберите его в списке.</p>
+        <dl class="counters">
+          <div><dt>транзисторов</dt><dd><span class="count" data-to="28">28</span><small>млрд</small></dd></div>
+          <div><dt>операций в секунду у Neural Engine</dt><dd><span class="count" data-to="38">38</span><small>трлн</small></dd></div>
+          <div><dt>техпроцесс второго поколения</dt><dd><span class="count" data-to="3">3</span><small>нм</small></dd></div>
+          <div><dt>ядер CPU в старшей версии</dt><dd><span class="count" data-to="10">10</span><small>ядер</small></dd></div>
+        </dl>
+      </div>
+      <div class="chip-side" data-reveal>
+        <div class="chip-visual"><svg id="chipSvg" viewBox="0 0 600 600" role="img" aria-label="Схема чипа M4 с блоками CPU, GPU, Neural Engine и памятью"></svg></div>
+        <div class="chip-legend" id="chipLegend" role="group" aria-label="Блоки чипа"></div>
+        <p class="chip-cap" id="chipCap" aria-live="polite">Наведите на блок чипа. Каждый прямоугольник на схеме отвечает за свою работу.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="history" id="history" aria-labelledby="histTitle">
+    <div class="hist-sticky">
+      <div class="wrap hist-head" data-reveal>
+        <p class="eyebrow"><span class="num">03</span>История</p>
+        <h2 id="histTitle">Сорок лет инженерии</h2>
+      </div>
+      <div class="hist-viewport" id="histViewport">
+        <ol class="hist-track" id="histTrack">
+          <li class="hist-card"><span class="hist-year">1984</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="16" y="6" width="32" height="44" rx="4"/><rect x="21" y="11" width="22" height="18" rx="2"/><path d="M24 38h8M20 50v6h24v-6"/></svg><h3>Macintosh</h3><p>Графический интерфейс и мышь в массовом компьютере. Экран 9 дюймов, 128 КБ памяти.</p></li>
+          <li class="hist-card"><span class="hist-year">1998</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 8h36c3 0 5 2 5 5l-3 27c-.4 3-2.5 5-5.5 5h-29c-3 0-5.1-2-5.5-5L9 13c0-3 2-5 5-5z"/><rect x="19" y="13" width="26" height="20" rx="2"/><path d="M26 45l-3 11h18l-3-11"/></svg><h3>iMac G3</h3><p>Полупрозрачный корпус цвета Bondi Blue и порты USB вместо старых разъёмов.</p></li>
+          <li class="hist-card"><span class="hist-year">2001</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="18" y="4" width="28" height="56" rx="6"/><rect x="23" y="9" width="18" height="16" rx="2"/><circle cx="32" cy="42" r="10"/><circle cx="32" cy="42" r="3.5"/></svg><h3>iPod</h3><p>Тысяча песен в кармане: жёсткий диск на 5 ГБ и колесо прокрутки.</p></li>
+          <li class="hist-card"><span class="hist-year">2007</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="17" y="4" width="30" height="56" rx="6"/><rect x="20.5" y="11" width="23" height="38" rx="1"/><circle cx="32" cy="54.5" r="2.6"/><path d="M28 7.5h8"/></svg><h3>iPhone</h3><p>Телефон, iPod и интернет-коммуникатор в одном устройстве с мультитач-экраном.</p></li>
+          <li class="hist-card"><span class="hist-year">2008</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="14" width="40" height="27" rx="3"/><path d="M4 46h56l-4 4H8z"/></svg><h3>MacBook Air</h3><p>Самый тонкий ноутбук своего времени. На презентации его достали из бумажного конверта.</p></li>
+          <li class="hist-card"><span class="hist-year">2010</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="4" width="40" height="56" rx="5"/><rect x="16" y="10" width="32" height="42" rx="1"/><circle cx="32" cy="56" r="2.2"/></svg><h3>iPad</h3><p>Планшет с экраном 9,7 дюйма и временем работы до 10 часов.</p></li>
+          <li class="hist-card"><span class="hist-year">2015</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><path d="M24 4h16l2 10H22zM22 50l2 10h16l2-10"/><rect x="17" y="14" width="30" height="36" rx="9"/><path d="M47 26h3v8h-3M32 24v8l5 4"/></svg><h3>Apple Watch</h3><p>Первые часы Apple: колёсико Digital Crown и оптический датчик пульса.</p></li>
+          <li class="hist-card"><span class="hist-year">2016</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><path d="M18 10c-6 0-9 4-9 9s3 9 8 9h2l1 26c0 2 1.6 3.4 3.5 3.4S27 56 27 54l-1-36c0-5-3-8-8-8zM46 10c6 0 9 4 9 9s-3 9-8 9h-2l-1 26c0 2-1.6 3.4-3.5 3.4S37 56 37 54l1-36c0-5 3-8 8-8z"/></svg><h3>AirPods</h3><p>Беспроводные наушники, которые подключаются к iPhone, как только открываешь кейс.</p></li>
+          <li class="hist-card"><span class="hist-year">2017</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="17" y="4" width="30" height="56" rx="8"/><path d="M26 4.5V7c0 1.2.8 2 2 2h8c1.2 0 2-.8 2-2V4.5"/></svg><h3>iPhone X</h3><p>Экран от края до края, OLED и Face ID вместо кнопки «Домой».</p></li>
+          <li class="hist-card"><span class="hist-year">2020</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><rect x="16" y="16" width="32" height="32" rx="4"/><rect x="23" y="23" width="18" height="18" rx="2"/><path d="M22 10v6M32 10v6M42 10v6M22 48v6M32 48v6M42 48v6M10 22h6M10 32h6M10 42h6M48 22h6M48 32h6M48 42h6"/></svg><h3>Apple M1</h3><p>Mac переходит на собственные чипы Apple с архитектурой ARM.</p></li>
+          <li class="hist-card"><span class="hist-year">2024</span><svg class="hist-ico" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 26c0-6 5-10 12-10h24c7 0 12 4 12 10v6c0 7-5 12-11 12-4 0-6-2-8-5-1-1.5-2.5-2-5-2s-4 .5-5 2c-2 3-4 5-8 5-6 0-11-5-11-12z"/><path d="M8 30H4M56 30h4"/></svg><h3>Apple Vision Pro</h3><p>Пространственный компьютер: интерфейс поверх реального мира, управление глазами, руками и голосом.</p></li>
+        </ol>
+      </div>
+      <div class="wrap"><div class="hist-bar" aria-hidden="true"><span id="histBar"></span></div></div>
+    </div>
+  </section>
+
+  <section class="chapter materials" id="materials" aria-labelledby="matTitle">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <p class="eyebrow"><span class="num">04</span>Материалы</p>
+        <h2 id="matTitle">Из чего это сделано</h2>
+      </header>
+    </div>
+    <div class="marquee" aria-hidden="true"><div class="mq-track"><span>Алюминий</span><span>Титан</span><span>Сапфир</span><span>Стекло</span><span>Медь</span><span>Неодим</span><span>Литий</span><span>Кремний</span><span>Золото</span><span>Алюминий</span><span>Титан</span><span>Сапфир</span><span>Стекло</span><span>Медь</span><span>Неодим</span><span>Литий</span><span>Кремний</span><span>Золото</span></div></div>
+    <div class="marquee alt" aria-hidden="true"><div class="mq-track"><span>Al</span><span>Ti</span><span>Al₂O₃</span><span>SiO₂</span><span>Cu</span><span>Nd</span><span>Li</span><span>Si</span><span>Au</span><span>Al</span><span>Ti</span><span>Al₂O₃</span><span>SiO₂</span><span>Cu</span><span>Nd</span><span>Li</span><span>Si</span><span>Au</span></div></div>
+    <div class="wrap">
+      <ul class="mat-grid">
+        <li class="mat" data-tilt><div class="mat-sw sw-al"></div><span class="sym">Al</span><h3>Алюминий</h3><p>Корпуса MacBook и iPad, рамки многих iPhone и корпуса Apple Watch. Лёгкий, прочный и хорошо отводит тепло.</p></li>
+        <li class="mat" data-tilt><div class="mat-sw sw-ti"></div><span class="sym">Ti</span><h3>Титан</h3><p>Рамки iPhone 15 Pro и 16 Pro, корпус Apple Watch Ultra. Очень прочный и при этом лёгкий металл.</p></li>
+        <li class="mat" data-tilt><div class="mat-sw sw-sa"></div><span class="sym">Al₂O₃</span><h3>Сапфир</h3><p>Закрывает объективы камер и экраны часов в стальных и титановых корпусах. Поцарапать его может почти только алмаз.</p></li>
+        <li class="mat" data-tilt><div class="mat-sw sw-gl"></div><span class="sym">SiO₂</span><h3>Стекло</h3><p>Передняя панель Ceramic Shield с вплавленными нанокристаллами керамики и матовые задние панели.</p></li>
+        <li class="mat" data-tilt><div class="mat-sw sw-cu"></div><span class="sym">Cu</span><h3>Медь</h3><p>Катушки беспроводной зарядки, тепловые трубки и дорожки на платах. Отлично проводит и ток, и тепло.</p></li>
+        <li class="mat" data-tilt><div class="mat-sw sw-nd"></div><span class="sym">Nd</span><h3>Неодим</h3><p>Магниты из сплава неодима, железа и бора держат MagSafe, крышку кейса AirPods и работают в динамиках.</p></li>
+        <li class="mat" data-tilt><div class="mat-sw sw-li"></div><span class="sym">Li</span><h3>Литий</h3><p>Основа литий-ионных и литий-полимерных аккумуляторов во всех устройствах.</p></li>
+        <li class="mat" data-tilt><div class="mat-sw sw-si"></div><span class="sym">Si</span><h3>Кремний</h3><p>Из сверхчистых кремниевых пластин делают кристаллы чипов. На одной пластине помещаются сотни чипов.</p></li>
+        <li class="mat" data-tilt><div class="mat-sw sw-au"></div><span class="sym">Au</span><h3>Золото</h3><p>Тонкий слой на контактах и разъёмах не окисляется и держит стабильный контакт.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="finale" id="finale" aria-labelledby="finTitle">
+    <div class="wrap fin-in" data-reveal>
+      <h2 id="finTitle">Всё снова целое.</h2>
+      <p class="sub">Разберите что-нибудь ещё.</p>
+      <div class="cta-row center">
+        <a class="btn btn-solid" href="#lab" data-go="mac">Разобрать MacBook</a>
+        <a class="btn btn-text" href="#top">Наверх <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a class="brand" href="#top" aria-label="Разбор, в начало страницы"><svg class="logo" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 6h12M4 10h12M6 14h12"/></svg><span>Разбор</span></a>
+    <p>Неофициальный образовательный проект, не связан с Apple Inc. Apple, iPhone, Mac, MacBook, Apple Watch и AirPods — товарные знаки Apple Inc. Схемы условные и не повторяют точное устройство конкретных моделей.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/motion@14.2.0/dist/motion.js"></script>
+<script src="engine.js"></script>
+<script src="devices.js"></script>
+<script src="devices2.js"></script>
+<script src="bits.js"></script>
+<script src="app.js"></script>
